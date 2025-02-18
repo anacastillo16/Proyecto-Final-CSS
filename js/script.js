@@ -143,3 +143,50 @@ formulario.addEventListener("submit", function (e) {
     peliculasContainer.appendChild(mensajeError);
   }
 });
+
+// Agregra pelis a favoritos
+document.addEventListener("DOMContentLoaded", function () {
+  let contenedorFavoritas = document.getElementById("favoritos-container");
+
+  let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+
+  mostrarFavoritas();
+
+  let botonAñadirFavorita = document.querySelectorAll(
+    ".boton.add-to-favorites"
+  );
+
+  botonAñadirFavorita.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      let articulo = this.closest(".pelicula");
+      let titulo = articulo.querySelector("h3").textContent;
+
+      let tituloMinuscula = titulo.toLowerCase();
+      let yaEnFavoritas = favoritas.some(
+        (fav) => fav.toLowerCase() === tituloMinuscula
+      );
+
+      if (!yaEnFavoritas) {
+        favoritas.push(titulo);
+        localStorage.setItem("favoritas", JSON.stringify(favoritas));
+
+        mostrarFavoritas();
+      } else {
+        alert("¡Ya está en favoritos!");
+      }
+    });
+  });
+
+  // Función para mostrar la lista de favoritos en la página
+  function mostrarFavoritas() {
+    contenedorFavoritas.innerHTML = "";
+    favoritas.forEach((title) => {
+      let favoriteItem = document.createElement("div");
+      favoriteItem.classList.add("favorite-item");
+      favoriteItem.textContent = title;
+      contenedorFavoritas.appendChild(favoriteItem);
+    });
+  }
+});

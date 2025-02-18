@@ -181,6 +181,45 @@ nav ul li a:hover{
     color: rgb(167, 167, 255);
 }
 
+#favoritos {
+    width: 90%;
+    margin: 20px auto; 
+    background-color: #f9f9f9;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#favoritos h2 {
+    color: #333; 
+    font-size: 1.5em; 
+    margin-bottom: 15px;
+    text-align: center; 
+}
+
+#favoritos-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.favorite-item {
+    background-color: #fff; 
+    border: 1px solid #eee; 
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    margin: 5px; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); 
+    color: #555; 
+    font-size: 1em; 
+    transition: all 0.3s ease; 
+}
+
+.favorite-item:hover {
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1); 
+}
+
 #buscador {
     display: flex;
     justify-content: center; 
